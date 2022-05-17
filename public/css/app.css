@@ -11267,6 +11267,6 @@ main {
   color: white;
   height: 100%;
 }
-.my-card::hover .my-card-body {
+.my-card:hover .my-card-body {
   display: block;
 }

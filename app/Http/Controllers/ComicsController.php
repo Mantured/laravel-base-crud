@@ -69,8 +69,8 @@ class ComicsController extends Controller
     {
         //
         $comic = Comic::findOrFail($id);
-        $data = ['comic' =>$data];
-        return view('comics.show', $data );
+
+        return view('comics.show', ['comic' =>$comic] );
     }
 
     /**
