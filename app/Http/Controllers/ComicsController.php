@@ -44,15 +44,15 @@ class ComicsController extends Controller
         $data = $request->all();
 
         $newComic = new Comic();
-        $newComic->title = $comic["title"];
-        $newComic->description = $comic["description"];
-        $newComic->thumb = $comic["thumb"];
+        $newComic->title = $data["title"];
+        $newComic->description = $data["description"];
+        $newComic->thumb = $data["thumb"];
         //floatval(mixed $value): float
-        $newComic->price = floatval($comic["price"]);
-        $newComic->series = $comic["series"];
+        $newComic->price = floatval($data["price"]);
+        $newComic->series = $data["series"];
         /* DateTime::createFromFormat(string $format, string $datetime, ?DateTimeZone $timezone = null): DateTime|false */
-        $newComic->sale_date = DateTime::createFromFormat("Y-m-d", $comic["sale_date"]);
-        $newComic->type = $comic["type"];
+        $newComic->sale_date = DateTime::createFromFormat("Y-m-d", $data["sale_date"]);
+        $newComic->type = $data["type"];
 
         $newComic->save();
 
@@ -68,7 +68,7 @@ class ComicsController extends Controller
     public function show($id)
     {
         //
-        $comic = Comic::findOrFail($id);
+        $comic = Comic::FindOrFail($id);
 
         return view('comics.show', ['comic' =>$comic] );
     }

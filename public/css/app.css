@@ -11249,7 +11249,8 @@ footer {
 }
 
 main {
-  /* height: 80vh; */
+  height: 80vh;
+  overflow: scroll;
 }
 
 /* img {
@@ -11266,7 +11267,17 @@ main {
   background-color: black;
   color: white;
   height: 100%;
+  width: 100%;
 }
 .my-card:hover .my-card-body {
   display: block;
+}
+
+.my-show-img {
+  height: 380px;
+  width: 380px;
+}
+
+.size-label {
+  width: 300px;
 }

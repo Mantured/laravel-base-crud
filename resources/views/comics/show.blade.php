@@ -7,7 +7,8 @@
     <div class="row g-2">
         <div class="col-12">
             <div class="card text-start">
-                <img src="{{$comic->thumb}}" class="card-img-top" alt="cover of{{$comic->title}}">
+                <img src="{{$comic->thumb}}" class="card-img-top align-self-center my-show-img
+                " alt="cover of{{$comic->title}}">
                 <div class="card-body">
                     <p class="card-text">{{$comic->description}}</p>
                     <p class="card-text">{{$comic->series}}</p>
@@ -16,7 +17,6 @@
                     <pre class="card-text">{{$comic->type}}</pre>
                 </div>
             </div>
-
         </div>
     </div>
 </section>
