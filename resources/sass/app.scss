@@ -13,3 +13,18 @@ main {
     width: 200px;
     height: 200px;
 } */
+
+.my-card {
+    position: relative;
+    .my-card-body {
+        position: absolute;
+        display: none;
+        /* z-index: 2; */
+        background-color: black;
+        color: white;
+        height: 100%;
+    }
+    &::hover .my-card-body {
+        display: block;
+    }
+}
