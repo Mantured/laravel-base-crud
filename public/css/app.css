@@ -11249,8 +11249,10 @@ footer {
 }
 
 main {
-  height: 80vh;
   /* overflow: scroll; */
+}
+main .my-height {
+  height: 80vh;
 }
 
 /* img {

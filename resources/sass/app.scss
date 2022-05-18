@@ -6,7 +6,9 @@ footer {
     height: 10vh;
 }
 main {
-    height: 80vh;
+    .my-height {
+        height: 80vh;
+    }
     /* overflow: scroll; */
 }
 
