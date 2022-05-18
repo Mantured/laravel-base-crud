@@ -5,6 +5,22 @@
 @section('main-content')
 <section class="container text-center overflow-scroll h-100">
     <div class="row g-2">
+        @if($errors->any())
+        <div class="alert alert-danger col-12">
+            <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+            </ul>
+        </div>
+        @endif
+
+        @if (session('deleted-message'))
+        <div class="alert alert-warning col-12">
+            {{ session('deleted-message') }}
+        </div>
+        @endif
+
         @foreach ($comics as $comic)
         <div class="col-4">
             <a href="{{ route('comics.show', $comic->id)}}">
@@ -24,3 +40,5 @@
     </div>
 </section>
 @endsection
+
+

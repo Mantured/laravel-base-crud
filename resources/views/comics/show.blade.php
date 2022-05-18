@@ -5,6 +5,11 @@
 @section('main-content')
 <section class="container text-center h-100">
     <div class="row g-2 h-100 align-content-center">
+        @if (session('message'))
+        <div class="alert alert-success col-12">
+            {{ session('message') }}
+        </div>
+        @endif
         <div class="col-12">
             <h1>{{$comic->title}}</h1>
         </div>
@@ -33,6 +38,13 @@
                         <button class="btn btn-warning">Edit</button>
                     </a>
                 </div>
+                <form action="{{route('comics.destroy', $comic)}}" class="col-3 blackhole" method="POST" comic-name="{{ucwords($comic->title)}}">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger">
+                        Delete
+                    </button>
+                </form>
                 <div class="col-3">
                     <a href="{{route('comics.show', $comic->id + 1)}}">
                         <button class="btn btn-success">Next</button>
@@ -42,4 +54,19 @@
         </div>
     </div>
 </section>
+@endsection
+
+@section('footer-script')
+    <script>
+    const blackHole = document.querySelectorAll('.blackhole');
+    blackHole.forEach(singleForm => {
+        singleForm.addEventListener('submit', function (event) {
+            event.preventDefault(); //acchiappo l'invio del form
+            userConfirm = window.confirm(`Are You Sure To Delate ${this.getAttribute('comic-name')}`);
+            if(userConfirm) {
+                this.submit();
+            }
+        })
+    });
+    </script>
 @endsection

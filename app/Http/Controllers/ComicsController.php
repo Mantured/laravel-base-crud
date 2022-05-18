@@ -16,9 +16,7 @@ class ComicsController extends Controller
     public function index()
     {
         $comics = Comic::all();
-        $data = ['comics' => $comics];
-
-        return view('comics.index', $data);
+        return view('comics.index', compact('comics'));
     }
 
     /**
@@ -43,6 +41,23 @@ class ComicsController extends Controller
         //
         $data = $request->all();
 
+        $request->validate([
+            'title'=>'required|min:3|max:20',
+            'description'=>'required|min:3|max:200', /* eheh not 255 */
+            'thumb'=>'required',
+            'price'=>'required',
+            'type'=>'required',
+            'series'=>'required|min:3|max:10',
+            'sale_date'=>'required',
+        ],
+        [
+            'required' => "Non puoi aggiungere un Comic senza :attribute",
+            'description.min' => 'CARATTERI INFERIORI AL MINIMO CONSENTITO',
+            'description.required'=>'É OBBLIGATORIO',
+        ],
+
+        );
+
         $newComic = new Comic();
         $newComic->title = $data["title"];
         $newComic->description = $data["description"];
@@ -55,6 +70,7 @@ class ComicsController extends Controller
         $newComic->type = $data["type"];
 
         $newComic->save();
+
 
         return redirect()->route('comics.show', $newComic->id);
     }
@@ -111,18 +127,22 @@ class ComicsController extends Controller
        /*  $comic->fill(); con i fillable nel model  */
 
 
-        return redirect()->route('comics.show', $comic);
+        return redirect()->route('comics.show', $comic)->with("message", "$comic->title modificato con successo");
 
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  Comic $comic
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Comic $comic)
     {
         //
+        $comic->delete();
+        return redirect()->route('comics.index')->with('deleted-message', "$comic->title é stato delittato correttamente");
+        /* posso passare anche gli errori se necessario con withErrors */
     }
+
 }
