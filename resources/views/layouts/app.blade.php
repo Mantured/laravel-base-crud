@@ -4,7 +4,7 @@
     <body>
         @include('partials.header')
 
-        <main class="mb-2">
+        <main class="">
             @yield('main-content')
         </main>
 

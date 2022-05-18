@@ -11276,8 +11276,8 @@ main .my-height {
 }
 
 .my-show-img {
-  height: 380px;
-  width: 380px;
+  height: 25vh;
+  width: 15vw;
 }
 
 .size-label {

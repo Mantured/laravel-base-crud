@@ -4,7 +4,7 @@
 
 @section('main-content')
 
-<form action="{{route('comics.store')}}" method='post' class="h-100">
+<form action="{{route('comics.store')}}" method='post' class="my-height">
 @csrf
         <div class="container h-100 ">
             {{-- <div class="row p-2">

@@ -3,7 +3,7 @@
 @section('title', 'Comic Book')
 
 @section('main-content')
-<section class="container text-center h-80">
+<section class="container text-center my-height mb-2">
     <div class="row g-2 h-100 align-content-center">
         @if (session('message'))
         <div class="alert alert-success col-12">

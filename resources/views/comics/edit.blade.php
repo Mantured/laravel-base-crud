@@ -4,7 +4,7 @@
 
 @section('main-content')
 
-<form action="{{ route('comics.update', ['comic' => $comic]) }}" method='post' class="h-100">
+<form action="{{ route('comics.update', ['comic' => $comic]) }}" method='post' class="my-height">
 @csrf
 @method('PUT')
     <div class="container h-100 ">

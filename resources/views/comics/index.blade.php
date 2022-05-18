@@ -3,7 +3,7 @@
 @section('title', 'Home')
 
 @section('main-content')
-<section class="container text-center overflow-scroll my-height">
+<section class="container text-center overflow-scroll my-height ">
     <div class="row g-2">
         @if($errors->any())
         <div class="alert alert-danger col-12">
