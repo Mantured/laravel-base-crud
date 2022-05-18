@@ -17,8 +17,8 @@
                     <input type="text" name="title" class="m-3">
                 </div>
 
-                <div class="col-8">
-                    <label for="description" class="size-label">Description</label>
+                <div class="col-8 d-flex">
+                    <label for="description" class="size-label align-self-center">Description</label>
                     <textarea name="description" class="m-3"></textarea>
                 </div>
 
@@ -33,11 +33,12 @@
                 </div>
                 <div class="col-8">
                     <label for="price" class="size-label">Price</label>
-                    <input type="number" class="m-3" name="price">
+                    <input type="number"  min="0.00" max="10000.00" step="0.01" class="m-3 text-end" name="price">
+                    <span>$</span>
                 </div>
                 <div class="col-8">
                     <label for="sale_date" class="size-label">Sale Date</label>
-                    <input type="text" class="m-3" name="sale_date">
+                    <input type="text" class="m-3 text-center" name="sale_date" placeholder="YY-MM-DD">
                 </div>
 
                 <div class="col-8 text-center">

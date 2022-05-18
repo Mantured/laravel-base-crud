@@ -68,32 +68,51 @@ class ComicsController extends Controller
     public function show($id)
     {
         //
-        $comic = Comic::FindOrFail($id);
+        $comic = Comic::findOrFail($id);
 
         return view('comics.show', ['comic' =>$comic] );
     }
 
+
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  Comic $comic
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Comic $comic)
     {
         //
+        return view('comics.edit', ["comic" => $comic]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  Comic $comic
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Comic $comic)
     {
         //
+        //dd($request->all());
+        $data = $request->all();
+        $comic->title = $data["title"];
+        $comic->description = $data["description"];
+        $comic->thumb = $data["thumb"];
+        $comic->price = floatval($data["price"]);
+        $comic->series = $data["series"];
+        $comic->sale_date = DateTime::createFromFormat("Y-m-d", $data["sale_date"]);
+        $comic->type = $data["type"];
+
+        $comic->save();
+        /* $comic->update();  sempre utilizzati con i fillables*/
+       /*  $comic->fill(); con i fillable nel model  */
+
+
+        return redirect()->route('comics.show', $comic);
+
     }
 
     /**

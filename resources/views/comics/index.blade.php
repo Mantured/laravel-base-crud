@@ -3,7 +3,7 @@
 @section('title', 'Home')
 
 @section('main-content')
-<section class="container text-center">
+<section class="container text-center overflow-scroll h-100">
     <div class="row g-2">
         @foreach ($comics as $comic)
         <div class="col-4">
